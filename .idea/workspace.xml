@@ -4,19 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b4f628a-6199-4e1e-8f2f-2beb3bdfb64d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lasercut-board-games.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scrabble/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scrabble/letters.html" afterDir="false" />
+    <list default="true" id="7b4f628a-6199-4e1e-8f2f-2beb3bdfb64d" name="Changes" comment="Initial of letters commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrabble/letters.html" beforeDir="false" afterPath="$PROJECT_DIR$/scrabble/letters.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -67,11 +67,23 @@
       <workItem from="1685794956590" duration="6649000" />
       <workItem from="1685861487452" duration="11348000" />
       <workItem from="1686146409413" duration="1676000" />
-      <workItem from="1686317752143" duration="294000" />
+      <workItem from="1686317752143" duration="1374000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial of letters commit">
+      <created>1686318163856</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686318163856</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial of letters commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial of letters commit" />
   </component>
 </project>
