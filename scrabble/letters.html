@@ -5,6 +5,9 @@
     <title>Scrabble Letters</title>
 </head>
 <body>
+<p>Change tile spacing with query param 'offset' (default offset=0.5)</p>
+<p>Change tile width with query param 'width' in centimeters (default width=2)</p>
+<p>Change number of tiles with query param 'n' (default n=100)</p>
 <svg xmlns="http://www.w3.org/2000/svg" width="35cm" height="35cm" id="scrabble-board"
      style="width: 35cm; height: 35cm;" viewBox="0 0 40 40">
     <g id="tiles" style="width: 35cm; height: 35cm;" transform="translate(2,2)"></g>
@@ -55,6 +58,7 @@
     // get tiles per row from query param
     let urlSearchParams = new URLSearchParams(window.location.search);
     const tilesPerRow = +(urlSearchParams.get('width') || 10);
+    const offset = +(urlSearchParams.get('offset') || 0.5);
     const nTiles = urlSearchParams.get('n') || 100;
 
     function createTile(letter, points) {
@@ -103,12 +107,12 @@
             }
             if ((currentIndex % tilesPerRow) === 0) {
                 currentRow = document.createElementNS(svgNs, 'g');
-                currentRow.setAttribute('transform', `translate(0 ${width * (currentIndex / tilesPerRow)})`)
+                currentRow.setAttribute('transform', `translate(0 ${(width + offset) * (currentIndex / tilesPerRow)})`)
                 tiles.appendChild(currentRow);
                 currentIndexInRow = 0;
             }
             let tile = createTile(letter, params.points);
-            tile.setAttribute('transform', `translate(${width * currentIndexInRow} 0)`)
+            tile.setAttribute('transform', `translate(${(width + offset) * currentIndexInRow} 0)`)
 
             currentRow.appendChild(tile);
             currentIndex++;

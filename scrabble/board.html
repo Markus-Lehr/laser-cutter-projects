@@ -9,9 +9,9 @@
      style="width: 35cm; height: 35cm;" viewBox="0 0 40 40">
     <g id="tiles" style="width: 35cm; height: 35cm;" transform="translate(2,2)"></g>
     <g id="lines" style="width: 35cm; height: 35cm;" transform="translate(2,2)"></g>
-    <rect height="0.933cm" width="0.933cm" x="0.5" y="0.5" rx="0.2"
+    <rect id="outline-engraving" height="0.933cm" width="0.933cm" x="0.5" y="0.5" rx="0.2"
           fill="transparent" stroke="black" stroke-width="0.5"></rect>
-    <rect height="0.945cm" width="0.945cm" x="0.3" y="0.3" rx="0.4"
+    <rect id="outline-cutting" height="0.945cm" width="0.945cm" x="0.3" y="0.3" rx="0.4"
           fill="transparent" stroke="red" stroke-width="0.05"></rect>
     <!--text style="font-size: 0.05cm; fill: black; letter-spacing: 0.2mm; text-anchor: middle; font-family: monospace;
           dominant-baseline: middle; font-weight: 700;" x="18.6" y="35">SCRABBLE
@@ -31,10 +31,21 @@
     const tripleLetterLabel = 'TRIPLE LETTER';
     const doubleLetterLabel = 'DOUBLE LETTER';
 
-    const tripleWordColor = 'black'; // 'gray';
-    const doubleWordColor = 'black'; // 'silver';
-    const tripleLetterColor = 'black'; // 'darkgray';
-    const doubleLetterColor = 'black'; // 'lightgray';
+    const startColor = '#404040';
+    const tripleWordColor = '#404040';
+    const doubleWordColor = '#707070';
+    const tripleLetterColor = '#A8A8A8';
+    const doubleLetterColor = '#C0C0C0';
+
+    // get rendering mode from query param. either "cut", "engrave"
+    let urlSearchParams = new URLSearchParams(window.location.search);
+    const mode = urlSearchParams.get('mode');
+    if (mode === 'cut') {
+        document.getElementById('outline-engraving').remove();
+        throw new Error('Stopping outline render with this error. Nothing actually went wrong.');
+    } else if (mode === 'engrave') {
+        document.getElementById('outline-cutting').remove();
+    }
 
     const tileTextStyle = `font-size: 0.014cm;
         text-anchor: middle;
@@ -68,7 +79,7 @@
         'W': () => generateTile(tripleWordLabel, tripleWordColor),
         'l': () => generateTile(doubleLetterLabel, doubleLetterColor),
         'L': () => generateTile(tripleLetterLabel, tripleLetterColor),
-        's': () => generateTile('START', doubleWordColor),
+        's': () => generateTile('START', startColor),
     }
 
     function generateLabel(label) {
@@ -130,6 +141,8 @@
             let x1, x2, y1, y2;
             if (j === 0) {
                 [x1, x2, y1, y2] = coords;
+                x1 -= thickness / 2;
+                x2 += thickness / 2;
             } else {
                 [y1, y2, x1, x2] = coords;
             }
