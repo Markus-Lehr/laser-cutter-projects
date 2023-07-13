@@ -62,6 +62,9 @@
     const nTiles = urlSearchParams.get('n') || 100;
     const mode = urlSearchParams.get('mode');
 
+    const suffix = nTiles < 100 ? ('n' + nTiles) : 'all';
+    document.getElementById('scrabble-letters').id = 'scrabble-letters-' + suffix;
+
     function createTile(letter, points) {
         let tileGroup = document.createElementNS(svgNs, 'g');
 
