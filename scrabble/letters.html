@@ -8,7 +8,7 @@
 <p>Change tile spacing with query param 'offset' (default offset=0.5)</p>
 <p>Change tile width with query param 'width' in centimeters (default width=2)</p>
 <p>Change number of tiles with query param 'n' (default n=100)</p>
-<svg xmlns="http://www.w3.org/2000/svg" width="35cm" height="35cm" id="scrabble-board"
+<svg xmlns="http://www.w3.org/2000/svg" width="35cm" height="35cm" id="scrabble-letters"
      style="width: 35cm; height: 35cm;" viewBox="0 0 40 40">
     <g id="tiles" style="width: 35cm; height: 35cm;" transform="translate(2,2)"></g>
 </svg>
@@ -60,20 +60,23 @@
     const tilesPerRow = +(urlSearchParams.get('width') || 10);
     const offset = +(urlSearchParams.get('offset') || 0.5);
     const nTiles = urlSearchParams.get('n') || 100;
+    const mode = urlSearchParams.get('mode');
 
     function createTile(letter, points) {
         let tileGroup = document.createElementNS(svgNs, 'g');
 
-        let tileCut = document.createElementNS(svgNs, 'rect');
-        tileCut.setAttribute('fill', 'transparent');
-        tileCut.setAttribute('width', width);
-        tileCut.setAttribute('height', width);
-        tileCut.setAttribute('rx', 0.2);
-        tileCut.setAttribute('stroke', 'red');
-        tileCut.setAttribute('stroke-width', 0.1);
-        tileGroup.appendChild(tileCut);
+        if (mode !== 'engrave') {
+            let tileCut = document.createElementNS(svgNs, 'rect');
+            tileCut.setAttribute('fill', 'transparent');
+            tileCut.setAttribute('width', width);
+            tileCut.setAttribute('height', width);
+            tileCut.setAttribute('rx', 0.2);
+            tileCut.setAttribute('stroke', 'red');
+            tileCut.setAttribute('stroke-width', 0.1);
+            tileGroup.appendChild(tileCut);
+        }
 
-        if (letter !== ' ') {
+        if (letter !== ' ' && mode !== 'cut') {
             let letterText = document.createElementNS(svgNs, 'text');
             letterText.setAttribute('x', width / 2);
             letterText.setAttribute('y', width / 2);
